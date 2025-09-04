@@ -3,20 +3,24 @@ import "./QuizCard.css";
 
 export default function QuizCard({ question, options, selected, onSelect }) {
   return (
-    <div className="quizcard">
-      <h2
-        className="quiz-question"
-        dangerouslySetInnerHTML={{ __html: question }}
-      />
+    <div className="quiz-card">
+      <h2 dangerouslySetInnerHTML={{ __html: question }} />
 
-      <div className="quiz-options">
-        {options.map((opt, idx) => (
-          <button
+      <div className="options">
+        {options.map((option, idx) => (
+          <label
             key={idx}
-            className={`quiz-option ${selected === opt ? "selected" : ""}`}
-            onClick={() => onSelect(opt)}
-            dangerouslySetInnerHTML={{ __html: opt }}
-          />
+            className={`option ${selected === option ? "selected" : ""}`}
+          >
+            <input
+              type="radio"
+              name="quiz-option"
+              value={option}
+              checked={selected === option}
+              onChange={() => onSelect(option)}
+            />
+            <span dangerouslySetInnerHTML={{ __html: option }} />
+          </label>
         ))}
       </div>
     </div>

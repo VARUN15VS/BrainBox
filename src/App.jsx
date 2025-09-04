@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
-import QuizGame from "./pages/QuizGame";   // 👈 Import QuizGame
+import QuizGame from "./pages/QuizGame";
 import Result from "./pages/Result";
 import "./NavBar.css";
 
@@ -12,7 +12,7 @@ function App() {
     accuracy: 0,
   });
 
-  const [answers, setAnswers] = useState([]); // 👈 store quiz answers
+  const [answers, setAnswers] = useState([]);
 
   return (
     <Router>
