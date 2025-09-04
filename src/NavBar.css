@@ -1,0 +1,47 @@
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.nav-btn:hover {
+  background: #ff6b6b;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Active/Clicked State */
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-btn {
+    width: 80%;
+    text-align: center;
+  }
+}
