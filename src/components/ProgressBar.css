@@ -1,0 +1,28 @@
+.progress-bar-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  transition: width 0.3s ease-in-out;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.timer {
+  font-weight: 600;
+  color: #ef4444;
+}

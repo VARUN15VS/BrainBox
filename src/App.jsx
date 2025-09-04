@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
+import QuizGame from "./pages/QuizGame";   // 👈 Import QuizGame
 import Result from "./pages/Result";
 import "./NavBar.css";
 
@@ -10,6 +11,8 @@ function App() {
     quizzesAttempted: 0,
     accuracy: 0,
   });
+
+  const [answers, setAnswers] = useState([]); // 👈 store quiz answers
 
   return (
     <Router>
@@ -41,12 +44,16 @@ function App() {
             }
           />
 
-          {/* Quiz Page */}
+          {/* Quiz Setup Page */}
+          <Route path="/quiz" element={<Quiz />} />
+
+          {/* Quiz Gameplay Page */}
           <Route
-            path="/quiz"
+            path="/quizgame"
             element={
-              <Quiz
-                onQuizComplete={(score, total) => {
+              <QuizGame
+                onQuizComplete={(score, total, userAnswers) => {
+                  // update stats
                   setStats((prev) => {
                     const newAttempted = prev.quizzesAttempted + 1;
                     const newAccuracy = Math.round((score / total) * 100);
@@ -55,13 +62,16 @@ function App() {
                       accuracy: newAccuracy,
                     };
                   });
+
+                  // save answers for result page
+                  setAnswers(userAnswers);
                 }}
               />
             }
           />
 
           {/* Result Page */}
-          <Route path="/result" element={<Result stats={stats} />} />
+          <Route path="/result" element={<Result stats={stats} answers={answers} />} />
         </Routes>
       </div>
     </Router>
